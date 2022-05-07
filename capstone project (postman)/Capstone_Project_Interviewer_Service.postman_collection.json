@@ -1,0 +1,265 @@
+{
+	"info": {
+		"_postman_id": "bde8279a-780a-4f91-a489-44c08a5d7861",
+		"name": "Capstone_Project_Interviewer_Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8097/api/v1/slot",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check status code of api\",function(){",
+							"    pm.response.to.have.status(201);",
+							"})",
+							"",
+							"pm.test(\"check status code of api not to have 404\",function(){",
+							"    pm.response.to.not.have.status(404);",
+							"})",
+							"",
+							"pm.test(\"check interviewerName\",function(){",
+							"   var jsonData= pm.response.json();",
+							"   pm.expect(jsonData.interviewerName).to.eql(\"john\")",
+							"})",
+							"",
+							"pm.test(\"check interviewerEmailId\",function(){",
+							"   var jsonData= pm.response.json();",
+							"   pm.expect(jsonData.interviewerEmailId).to.eql(\"john@gmail.com\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"techTrack\":\"developer\",\n   \"interviewerEmailId\":\"john@gmail.com\",\n   \"interviewerName\":\"john\",\n   \"startTime\":\"11:00:00\",\n   \"endTime\":\"11:30:00\",\n   \"date\":\"2022:06:07\",\n   \"description\":\"java backend interview\",\n   \"bookedStatus\":\"AVAILABLE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base_url}}/slot",
+					"host": [
+						"{{Base_url}}"
+					],
+					"path": [
+						"slot"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8097/api/v1/slot/ronaldo@gmail.com",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check status code of api\",function(){",
+							"    pm.response.to.have.status(201);",
+							"})",
+							"",
+							"pm.test(\"check status code of api not to have 404\",function(){",
+							"    pm.response.to.not.have.status(404);",
+							"})",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base_url}}/slot/ronaldo@gmail.com",
+					"host": [
+						"{{Base_url}}"
+					],
+					"path": [
+						"slot",
+						"ronaldo@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8097/api/v1/slot",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"techTrack\":\"tester\",\n   \"interviewerEmailId\":\"ronaldo@gmail.com\",\n   \"interviewerName\":\"ronaldo\",\n   \"startTime\":\"11:30:00\",\n   \"endTime\":\"12:30:00\",\n   \"date\":\"2022:06:02\",\n   \"description\":\"Automation\",\n   \"bookedStatus\":\"UNAVAILABLE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base_url}}/slot",
+					"host": [
+						"{{Base_url}}"
+					],
+					"path": [
+						"slot"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8097/api/v1/slot/interview/slot/tester",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check status code of api\",function(){",
+							"    pm.response.to.have.status(201);",
+							"})",
+							"",
+							"pm.test(\"check status code of api not to have 404\",function(){",
+							"    pm.response.to.not.have.status(404);",
+							"})",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base_url}}/slot/interview/slot/tester",
+					"host": [
+						"{{Base_url}}"
+					],
+					"path": [
+						"slot",
+						"interview",
+						"slot",
+						"tester"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8097/api/v1/slot/SLOT3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check status code of api\",function(){",
+							"    pm.response.to.have.status(201);",
+							"})",
+							"",
+							"pm.test(\"check status code of api not to have 404\",function(){",
+							"    pm.response.to.not.have.status(404);",
+							"})",
+							"",
+							"",
+							"pm.test(\"check interviewerEmailId\",function(){",
+							"   var jsonData= pm.response.json();",
+							"   pm.expect(jsonData.interviewerEmailId).to.eql(\"ajayro@gmail.com\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"slotId\": \"SLOT3\",\n    \"techTrack\": \"developer\",\n    \"interviewerEmailId\": \"ajayro@gmail.com\",\n    \"interviewerName\": \"ajay\",\n    \"startTime\": \"09:30\",\n    \"endTime\": \"11:30\",\n    \"date\": \"2022:06:01\",\n    \"description\": \"java backend interview\",\n    \"bookedStatus\": \"AVAILABLE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base_url}}/slot/SLOT3",
+					"host": [
+						"{{Base_url}}"
+					],
+					"path": [
+						"slot",
+						"SLOT3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8097/api/v1/slot/status/SLOT4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check status code of api\",function(){",
+							"    pm.response.to.have.status(201);",
+							"})",
+							"",
+							"pm.test(\"check status code of api not to have 404\",function(){",
+							"    pm.response.to.not.have.status(404);",
+							"})",
+							"",
+							"",
+							"pm.test(\"check bookedStatus\",function(){",
+							"   var jsonData= pm.response.json();",
+							"   pm.expect(jsonData.bookedStatus).to.eql(\"AVAILABLE\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"slotId\": \"SLOT4\",\n    \"techTrack\": \"tester\",\n    \"interviewerEmailId\": \"ronaldo@gmail.com\",\n    \"interviewerName\": \"ronaldo\",\n    \"startTime\": \"11:30\",\n    \"endTime\": \"12:30\",\n    \"date\": \"2022:06:02\",\n    \"description\": \"Automation\",\n    \"bookedStatus\": \"AVAILABLE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base_url}}/slot/status/SLOT4",
+					"host": [
+						"{{Base_url}}"
+					],
+					"path": [
+						"slot",
+						"status",
+						"SLOT4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

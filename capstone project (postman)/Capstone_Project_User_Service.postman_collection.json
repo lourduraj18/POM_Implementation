@@ -1,0 +1,294 @@
+{
+	"info": {
+		"_postman_id": "8bbf20c0-cb5f-46af-915b-39398e3d6642",
+		"name": "Capstone_Project_User_Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8090/api/v1/user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check status code of api\",function(){",
+							"    pm.response.to.have.status(201);",
+							"})",
+							"",
+							"pm.test(\"check status code of api not to have 404\",function(){",
+							"    pm.response.to.not.have.status(404);",
+							"})",
+							"",
+							"pm.test(\"check userName\",function(){",
+							"   var jsonData= pm.response.json();",
+							"   pm.expect(jsonData.userName).to.eql(\"golu\")",
+							"})",
+							"",
+							"pm.test(\"check userEmailId\",function(){",
+							"   var jsonData= pm.response.json();",
+							"   pm.expect(jsonData.userEmailId).to.eql(\"golu@gmail.com\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"userEmailId\":\"golu@gmail.com\",\n\"userName\":\"golu\",\n\"phoneNo\":9908876897,\n\"password\":\"golu@1999\",\n\"department\":\"IT\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base_url}}/user",
+					"host": [
+						"{{Base_url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8090/api/v1/user/ajay@gmail.com",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check status code of api\",function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"check status code of api not to have 404\",function(){",
+							"    pm.response.to.not.have.status(404);",
+							"})",
+							"",
+							"pm.test(\"check userName\",function(){",
+							"   var jsonData= pm.response.json();",
+							"   pm.expect(jsonData.userName).to.eql(\"Ajay Ronaldo\")",
+							"})",
+							"",
+							"pm.test(\"check userEmailId\",function(){",
+							"   var jsonData= pm.response.json();",
+							"   pm.expect(jsonData.userEmailId).to.eql(\"ajay@gmail.com\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base_url}}/user/ajay@gmail.com",
+					"host": [
+						"{{Base_url}}"
+					],
+					"path": [
+						"user",
+						"ajay@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8090/api/v1/user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"userEmailId\":\"Raj@gmail.com\",\n\"userName\":\"Raj\",\n\"phoneNo\":9988776654,\n\"password\":\"Raj@1999\",\n\"department\":\"IT\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/v1/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8090/api/v1/user/ajay@gmail.com",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check status code of api\",function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"check status code of api not to have 404\",function(){",
+							"    pm.response.to.not.have.status(404);",
+							"})",
+							"",
+							"pm.test(\"check userName of 0th index\",function(){",
+							"   var jsonData= pm.response.json();",
+							"   pm.expect(jsonData.userName).to.eql(\"Ajay A\")",
+							"})",
+							"",
+							"pm.test(\"check userEmailId of 1st index\",function(){",
+							"   var jsonData= pm.response.json();",
+							"   pm.expect(jsonData.userEmailId).to.eql(\"ajay@gmail.com\")",
+							"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"userEmailId\":\"ajay@gmail.com\",\n\"userName\":\"Ajay A\",\n\"phoneNo\":9988776655,\n\"password\":\"Ajay@1998\",\n\"department\":\"IT\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base_url}}/user/ajay@gmail.com",
+					"host": [
+						"{{Base_url}}"
+					],
+					"path": [
+						"user",
+						"ajay@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8090/api/v1/users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check status code of api\",function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"check status code of api not to have 404\",function(){",
+							"    pm.response.to.not.have.status(404);",
+							"})",
+							"",
+							"pm.test(\"check userName of 0th index\",function(){",
+							"   var jsonData= pm.response.json();",
+							"   pm.expect(jsonData[0].userName).to.eql(\"Ajay Ronaldo\")",
+							"})",
+							"",
+							"pm.test(\"check userEmailId of 1st index\",function(){",
+							"   var jsonData= pm.response.json();",
+							"   pm.expect(jsonData[1].userEmailId).to.eql(\"joel@gmail.com\")",
+							"})",
+							"",
+							"pm.test(\"check phoneNo of 2nd index\",function(){",
+							"   var jsonData= pm.response.json();",
+							"   pm.expect(jsonData[2].phoneNo).to.eql(9988876897)",
+							"})",
+							"",
+							"pm.test(\"check department of 3rd index\",function(){",
+							"   var jsonData= pm.response.json();",
+							"   pm.expect(jsonData[3].department).to.eql(\"IT\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base_url}}/users",
+					"host": [
+						"{{Base_url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8090/api/v1/user/Raj@gmail.com",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{Base_url}}/user/Raj@gmail.com",
+					"host": [
+						"{{Base_url}}"
+					],
+					"path": [
+						"user",
+						"Raj@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8090/api/v1/user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"userEmailId\":\"joel@gmail.com\",\n\"userName\":\"joel\",\n\"phoneNo\":9988776654,\n\"password\":\"joel@1999\",\n\"department\":\"IT\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/v1/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
